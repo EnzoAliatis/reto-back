@@ -3,13 +3,13 @@ Este es el módulo de backend, en sí esta hecho como módulos desacoplandos en 
 
 ## Uso
 clonar Repo
-`https://github.com/EnzoAliatis/reto-back.git`
+`$ git clone https://github.com/EnzoAliatis/reto-back.git`
 
 Instalar dependencias dentro de la carpeta descargada
-`npm install`
+`$ npm install`
 
 Correr el Back
-`node app`
+`$ node app`
 
 Entrar al navegador con el link
 [local host 5000](http://0.0.0.0:5000)
