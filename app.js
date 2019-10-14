@@ -36,18 +36,22 @@ app.get('/subtitles', (req, res) => {
 })
 
 app.post('/subtitles', (req, res) => {
-  let fil
-  getSubtitles({
-    videoID: req.body.code, // youtube video id
-    lang: 'es' // default: `en`
-  }).then(async function(captions) {
-    fil = captions.filter(cap => cap.text.includes(req.body.string))
-    init = parseFloat(fil[0].start)
-    end = parseFloat(fil[0].dur)
-    fil[0].Timestamp = `${convert(init)}-${convert(init + end)}`
-    await res.send(fil[0])
-    // console.log(captions)
-  });  
+  try {
+    let fil
+    getSubtitles({
+      videoID: req.body.code, // youtube video id
+      lang: 'es' // default: `en`
+    }).then(async function(captions) {
+      fil = captions.filter(cap => cap.text.includes(req.body.string))
+      init = parseFloat(fil[0].start)
+      end = parseFloat(fil[0].dur)
+      fil[0].Timestamp = `${convert(init)}-${convert(init + end)}`
+      await res.send(fil[0])
+      // console.log(captions)
+    });  
+  } catch (e) {
+    res.send('Error, posiblemente no esta bien el codigo o la frase a buscar')
+  }
 })
 
 
